@@ -1,0 +1,95 @@
+conky.config = {
+	use_xft= true,
+	xftalpha= .1,
+	update_interval= 1,
+	total_run_times= 0,
+
+	background= true,
+
+	own_window= true,
+	own_window_type= 'desktop',
+	own_window_transparent= true,
+	own_window_hints= 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_argb_visual= true,
+
+	double_buffer= true,
+
+	minimum_width= 1900,
+	maximum_width= 1980,
+
+	minimum_height= 800,
+	maximum_height= 800,
+
+	draw_shades= false,
+	draw_outline= false,
+	draw_borders= false,
+	draw_graph_borders= false,
+	
+	default_color= '7b7b7b',
+
+	--color1 = 'EF5A29',
+	--color1 = '83040d',
+	color1 = '1e1e1e',
+	color2 = '636363',
+
+	alignment= 'top_right',
+
+	gap_x= 25,
+	gap_y= 0,
+
+	no_buffers= true,
+	text_buffer_size = 2048,
+	uppercase= false,
+
+	cpu_avg_samples= 4,
+	net_avg_samples= 2,
+
+	override_utf8_locale= true,
+
+	font= 'Arial:style=medium:size=9',
+
+	lua_load = '~/.conky/rog_g14_rings.lua',
+	lua_draw_hook_post = 'main',
+
+}
+
+conky.text = [[
+${voffset 70}
+${goto 985}${color1}${font arial:style=bold:size=11}${cpu cpu0}% ${goto 1105}${color1}${font arial:style=bold:size=11}${cpu cpu1}% ${goto 1225}${color1}${font arial:style=bold:size=11}${cpu cpu2}% ${goto 1345}${color1}${font arial:style=bold:size=11}${cpu cpu3}% ${goto 1465}${color1}${font arial:style=bold:size=11}${cpu cpu4}% ${goto 1585}${color1}${font arial:style=bold:size=11}${cpu cpu5}% ${goto 1705}${color1}${font arial:style=bold:size=11}${cpu cpu6}% ${goto 1825}${color1}${font arial:style=bold:size=11}${cpu cpu7}%
+${voffset 55}
+${goto 985}${color1}${font arial:style=bold:size=11}${cpu cpu8}% ${goto 1105}${color1}${font arial:style=bold:size=11}${cpu cpu9}% ${goto 1225}${color1}${font arial:style=bold:size=11}${cpu cpu10}% ${goto 1345}${color1}${font arial:style=bold:size=11}${cpu cpu11}% ${goto 1465}${color1}${font arial:style=bold:size=11}${cpu cpu12}% ${goto 1585}${color1}${font arial:style=bold:size=11}${cpu cpu13}% ${goto 1705}${color1}${font arial:style=bold:size=11}${cpu cpu14}% ${goto 1825}${color1}${font arial:style=bold:size=11}${cpu cpu15}%
+
+${voffset -100}
+${goto 860}${color1}${font arial:style=bold:size=12}CPU
+${voffset 10}
+${goto 890}${color1}${font arial:style=bold:size=12}${cpu cpu}%
+${voffset 10}
+${goto 880}${color #7b7b7b}${cpugraph 60,1000 -t}
+${voffset 65}
+${goto 1580}${color1}${font arial:style=bold:size=12}MEM ${goto 1780}${color1}${font arial:style=bold:size=12}DISK
+${voffset 10}
+${goto 1610}${color1}${font arial:style=bold:size=12}${memperc}% ${goto 1810}${color1}${font arial:style=bold:size=12}${fs_used_perc /}%
+
+${if_match "${addr wlp2s0}" != "No Address"}
+${goto 1420}${color #7b7b7b} ${downspeedgraph wlp2s0 40,250 -l}
+${goto 1420}${color #7b7b7b} ${upspeedgraph wlp2s0 40,250 -l}
+
+${voffset -125}
+${goto 1700}${color1}${font arial:style=bold:size=11}WLAN down : ${downspeedf wlp2s0} KB
+${voffset 22}
+${goto 1700}${color1}${font arial:style=bold:size=11}WLAN up : ${upspeedf wlp2s0} KB
+$endif
+
+${if_match "${addr enx0c379608b115}" != "No Address"}
+${goto 1420}${color #7b7b7b} ${downspeedgraph enx0c379608b115 40,250 -l}
+${goto 1420}${color #7b7b7b} ${upspeedgraph enx0c379608b115 40,250 -l}
+
+${voffset -125}
+${goto 1700}${color1}${font arial:style=bold:size=11}LAN down : ${downspeedf enx0c379608b115} KB
+${voffset 22}
+${goto 1700}${color1}${font arial:style=bold:size=11}LAN up : ${upspeedf enx0c379608b115} KB
+$endif
+
+]]
+
+
